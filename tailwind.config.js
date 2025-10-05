@@ -3,7 +3,15 @@ module.exports = {
   content: ["./app/**/*.{js,ts,tsx}", "./components/**/*.{js,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        queno: ["Queno"], // matches your useFonts key
+        quera: ["Quera"],
+        stetica: ["Stetica"],
+        steticareg: ["SteticaReg"],
+        ztNature: ["ZTNature"],
+      },
+    },
   },
   plugins: [],
 };
