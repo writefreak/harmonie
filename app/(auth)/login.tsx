@@ -28,11 +28,11 @@ export default function Login() {
               Login Here
             </Text>
             <View className="flex-row items-center gap-2">
-              <Text className="text-gray-500 font-quera text-xl">
+              <Text className="text-gray-500 font-steticareg text-xl">
                 Don't have an account?
               </Text>
               <Link href={"/(auth)/signup"}>
-                <Text className="text-[#aa1f1f] font-quera text-xl">
+                <Text className="text-[#aa1f1f] font-steticareg text-xl">
                   Signup
                 </Text>
               </Link>
@@ -43,11 +43,11 @@ export default function Login() {
           <View className="gap-4">
             {inputs.map((i) => (
               <View key={i.id} className="gap-2 pt-2">
-                <Text className="text-gray-500 font-quera text-base">
+                {/* <Text className="text-gray-500 font-quera text-base">
                   {i.label}
-                </Text>
+                </Text> */}
                 <TextInput
-                  className="py-4 bg-gray-100 px-4 rounded-full text-sm"
+                  className="py-4 bg-gray-100 px-4 rounded-full text-sm font-steticareg"
                   placeholder={i.placeholder}
                   placeholderTextColor="#9ca3af"
                   keyboardType={
@@ -58,7 +58,7 @@ export default function Login() {
             ))}
             <View className="pt-10">
               <TouchableOpacity
-                onPress={() => router.push("/(auth)/otpScreen")}
+                onPress={() => router.push("/home")}
                 className="bg-[#aa1f1f] h-12  rounded-full w-full items-center justify-center"
               >
                 <Text className="text-xl text-white font-quera">

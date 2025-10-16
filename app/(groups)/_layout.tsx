@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-export default function OnboardingLayout() {
+export default function GroupLayout() {
   return (
     <Stack
       screenOptions={{
@@ -9,7 +9,7 @@ export default function OnboardingLayout() {
       }}
     >
       <Stack.Screen
-        name="onboarding"
+        name="groups"
         options={{
           headerShown: false,
           animation: "slide_from_left",

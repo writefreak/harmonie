@@ -1,5 +1,6 @@
+import CustomKeyboard from "@/components/ui/customKeyboard";
 import NavHeader from "@/components/ui/navHeader";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
   TextInput as RNTextInput,
@@ -11,7 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Otpscreen() {
-  const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
+  const [otp, setOtp] = useState<string[]>(Array(4).fill("")); // 4 digits
   const inputRefs = useRef<RNTextInput[]>([]);
 
   const handleChange = (text: string, index: number) => {
@@ -20,7 +21,6 @@ export default function Otpscreen() {
       newOtp[index] = text;
       setOtp(newOtp);
 
-      // Move to next input if available
       if (index < otp.length - 1) {
         inputRefs.current[index + 1]?.focus();
       }
@@ -40,33 +40,66 @@ export default function Otpscreen() {
     }
   };
 
+  // 👇🏽 handle when a key is pressed from custom keyboard
+  const handleKeyboardPress = (key: string) => {
+    const emptyIndex = otp.findIndex((d) => d === "");
+    if (emptyIndex !== -1) {
+      handleChange(key, emptyIndex);
+    }
+  };
+
+  // 👇🏽 handle when backspace is pressed
+  const handleKeyboardBackspace = () => {
+    const lastFilledIndex = otp
+      .slice()
+      .reverse()
+      .findIndex((d) => d !== "");
+    if (lastFilledIndex !== -1) {
+      const index = otp.length - 1 - lastFilledIndex;
+      const newOtp = [...otp];
+      newOtp[index] = "";
+      setOtp(newOtp);
+      inputRefs.current[index]?.focus();
+    }
+  };
+
   return (
     <View className="bg-white flex-1">
       <NavHeader>Confirm Account</NavHeader>
       <SafeAreaView edges={["right", "left", "top"]}>
         <View className="p-4">
           <View className="gap-2 pb-10">
-            <Text className="text-[#aa1f1f] text-4xl font-quera">
-              OTP Confirmation
-            </Text>
-            <View className="flex-row items-center gap-2">
-              <Text className="text-gray-500 font-quera text-lg w-96">
-                A code will be sent to your email. Please enter this code to
-                confirm your account.
+            <View className="gap-2 pb-10">
+              <Text className="text-[#aa1f1f] text-3xl font-quera">
+                Enter Phone Code
+              </Text>
+
+              <Text className="text-gray-500 font-steticareg text-lg">
+                Please enter the 4-digit code we've sent to your device.{" "}
+                <Text className="text-gray-500">
+                  Didn’t see it?{" "}
+                  <Link href={"/"}>
+                    <Text className="text-[#aa1f1f] font-steticareg underline">
+                      Resend
+                    </Text>
+                  </Link>
+                </Text>
               </Text>
             </View>
           </View>
 
-          {/* 👇🏽 Your original flex-row, untouched */}
-          <View className="flex-row flex-1 gap-8">
+          {/* 👇🏽 OTP Inputs */}
+          <View className="flex-row flex-1 gap-10 justify-center">
             {otp.map((digit, index) => (
               <TextInput
                 key={index}
                 ref={(ref) => {
                   if (ref) inputRefs.current[index] = ref;
                 }}
-                className="h-12 w-12 border text-center border-gray-400 rounded-xl"
+                className="h-16 w-16 border text-center border-gray-400 rounded-xl"
                 keyboardType="number-pad"
+                showSoftInputOnFocus={false} // 👈🏽 disable system keyboard
+                caretHidden={true} // 👈🏽 optional, hides blinking cursor
                 maxLength={1}
                 value={digit}
                 onChangeText={(text) => handleChange(text, index)}
@@ -74,15 +107,24 @@ export default function Otpscreen() {
               />
             ))}
           </View>
+
           <View className="pt-32">
             <TouchableOpacity
-              onPress={() => router.push("/(auth)/password")}
-              className="bg-[#aa1f1f] h-12  rounded-full w-full items-center justify-center"
+              onPress={() => router.push("/(auth)/login")}
+              className="bg-[#aa1f1f] h-12 rounded-full w-full items-center justify-center"
             >
               <Text className="text-xl text-white font-quera">
                 Confirm Account
               </Text>
             </TouchableOpacity>
+          </View>
+
+          {/* 👇🏽 Add custom keyboard at the bottom */}
+          <View className="pt-16 items-center">
+            <CustomKeyboard
+              onKeyPress={handleKeyboardPress}
+              onBackspace={handleKeyboardBackspace}
+            />
           </View>
         </View>
       </SafeAreaView>
