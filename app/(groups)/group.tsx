@@ -83,18 +83,18 @@ const category = [
     id: 2,
     image: require("../../assets/images/shopping.jpg"),
     text: "Fashion & Lifestyle",
-    link: "/(groups)/entertainment",
+    link: "/(groups)/fashion",
   },
   {
     id: 3,
     image: require("../../assets/images/travel.jpg"),
     text: "Travelling",
-    link: "/(groups)/entertainment",
+    link: "/(groups)/travelling",
   },
   {
     id: 4,
     image: require("../../assets/images/bills.jpg"),
     text: "Bills & Finance",
-    link: "/(groups)/entertainment",
+    link: "/(groups)/bills",
   },
 ];

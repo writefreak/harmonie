@@ -43,7 +43,7 @@ export default function GroupCard({
           onPress={onJoin}
           className="py-2 bg-[#aa1f1f] w-32 items-center justify-center rounded-full"
         >
-          <Text className="text-white font-stetica">Join</Text>
+          <Text className="text-white font-stetica">Explore</Text>
         </TouchableOpacity>
       </View>
     </View>

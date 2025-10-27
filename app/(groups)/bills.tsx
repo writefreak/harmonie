@@ -134,19 +134,19 @@ const groups = [
   },
 ];
 
-export default function Entertainment() {
+export default function Travelling() {
   const [showAll, setShowAll] = useState(false);
   const visibleGroups = showAll ? groups : groups.slice(0, 5);
 
   return (
     <View className="flex-1 bg-white">
-      <NavHeader>Entertainment Groups</NavHeader>
+      <NavHeader>Bills & Finance Groups</NavHeader>
       <SafeAreaView edges={["top", "left", "right"]} style={{ flex: 1 }}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View className="p-4">
             <View className="h-[200px]">
               <ImageBackground
-                source={require("../../assets/images/flex.jpg")}
+                source={require("../../assets/images/bills.jpg")}
                 imageStyle={{ borderRadius: 30 }}
                 className="h-full w-full"
               >
@@ -154,11 +154,11 @@ export default function Entertainment() {
                   <View className="p-4 gap-10">
                     <View className="gap-2">
                       <Text className="text-white font-stetica text-2xl w-72">
-                        Entertainment Groups
+                        Bills & Finance Groups
                       </Text>
                       <Text className="text-white font-steticareg w-60 text-sm">
-                        Find groups to contribute for entertainment-based
-                        expenses here
+                        Find groups to contribute to settle bills and expenses
+                        here
                       </Text>
                     </View>
                     <Text className="text-white font-steticareg w-48">

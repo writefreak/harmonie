@@ -56,7 +56,7 @@ export default function Home() {
         </View>
         <View className="p-4">
           <View className="py-6">
-            <Text className="font-stetica text-xl">Suggested Groups</Text>
+            <Text className="font-stetica text-xl">Featured Groups</Text>
           </View>
 
           <ScrollView
@@ -97,7 +97,7 @@ export default function Home() {
             ))}
           </ScrollView>
 
-          <View className="p-4">
+          <View className="p-4 pt-9">
             <View className="py-6 flex-row justify-between items-center">
               <Text className="font-stetica text-xl">Top Contributors</Text>
               <TouchableOpacity>
@@ -130,7 +130,7 @@ const icons = [
     id: 1,
     icon: <Plus color="gray" />,
     text: "Top-up",
-    link: "",
+    link: "/(payment)/top-up",
   },
   {
     id: 2,
@@ -143,7 +143,7 @@ const icons = [
     id: 3,
     icon: <HandCoins color="gray" />,
     text: "Groups",
-    link: "/(groups)/group",
+    link: "/(groups)/yourGroups",
   },
 ];
 

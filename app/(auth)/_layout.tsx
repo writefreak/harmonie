@@ -1,15 +1,15 @@
 import { Stack } from "expo-router";
 
-export default function GroupLayout() {
+export default function AuthLayout() {
   return (
     <Stack
       screenOptions={{
         headerShown: false,
-        animation: "slide_from_right",
+        animation: "slide_from_left",
       }}
     >
       <Stack.Screen
-        name="groups"
+        name="auth"
         options={{
           headerShown: false,
           animation: "slide_from_left",

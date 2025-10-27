@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-export default function GroupLayout() {
+export default function PaymentLayout() {
   return (
     <Stack
       screenOptions={{
@@ -9,7 +9,7 @@ export default function GroupLayout() {
       }}
     >
       <Stack.Screen
-        name="groups"
+        name="payment"
         options={{
           headerShown: false,
           animation: "slide_from_left",
